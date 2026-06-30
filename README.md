@@ -56,11 +56,7 @@ It performs the following checks:
 
 ### GitHub Actions Success
 
-(Add screenshot here)
-
 ### Nginx 403 Forbidden
-
-(Add screenshot here)
 
 ---
 

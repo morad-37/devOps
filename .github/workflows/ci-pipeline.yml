@@ -1,0 +1,29 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check for real env file
+        run: |
+          if [ -f ".env" ]; then
+            echo ".env file should not be committed"
+            exit 1
+          fi
+
+      - name: Check HTML title
+        run: |
+          grep -R "<h1>" app/public/*.html
+
+      - name: Build Docker image
+        run: |
+          docker build -t devops-app ./app

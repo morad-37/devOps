@@ -4,11 +4,9 @@ on:
   push:
     branches:
       - main
-
   pull_request:
     branches:
       - main
-
 
 jobs:
   build-and-check:
@@ -27,11 +25,8 @@ jobs:
 
       - name: Check HTML title
         run: |
-               - name: Check HTML title
-        run: |
-          find . -name "*.html" -type f
-          grep -R "<h1>" . --include="*.html"
-          
+          grep -R "<h1>" --include="*.html" .
+
       - name: Build Docker image
         run: |
           docker build -t devops-app ./app
